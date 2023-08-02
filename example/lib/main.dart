@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_imin_printer/flutter_imin_printer.dart';
-import 'package:flutter_imin_printer/models/column_text.dart';
-import 'package:flutter_imin_printer/models/printer_text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -82,7 +80,7 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   await _flutterIminPrinterPlugin.printText(PrinterText(text: "Hello World Imin Printer"));
                   await _flutterIminPrinterPlugin.printSpace();
-                  await _flutterIminPrinterPlugin.printText(PrinterText(text: "Hello World Imin Printer 2",textSize: 18));
+                  await _flutterIminPrinterPlugin.printText(PrinterText(text: "Hello World Imin Printer 2", textSize: 18));
                   await _flutterIminPrinterPlugin.printLines(lines: 25);
                 },
                 child: const Text("printText"),
@@ -106,7 +104,6 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   await _flutterIminPrinterPlugin.printBarcode("{B012345678912");
                   await _flutterIminPrinterPlugin.printSpace();
-
                 },
                 child: const Text("printBarcode"),
               ),
@@ -122,12 +119,13 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 onPressed: () async {
                   List<ColumnText> column = [
-                    ColumnText(text: "Hello World Imin Printer rerrsadasdsdadasd",textWidth: 1,textAlign: 0,textSize: 18),
-                    ColumnText(text: "RM 10000.00",textWidth: 1,textAlign: 2,textSize: 20),
-
+                    ColumnText(text: "Hello World Imin Printer rerrsadasdsdadasd", textWidth: 1, textAlign: 0, textSize: 18),
+                    ColumnText(text: "RM 10000.00", textWidth: 1, textAlign: 2, textSize: 20),
                   ];
-
                   await _flutterIminPrinterPlugin.printColumn(column);
+                  await _flutterIminPrinterPlugin.printText(PrinterText(text: 'testing'));
+                  await _flutterIminPrinterPlugin.printColumn(column);
+                  await _flutterIminPrinterPlugin.printLines(lines: 120);
                 },
                 child: const Text("printColumn"),
               ),

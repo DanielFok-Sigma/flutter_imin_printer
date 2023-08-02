@@ -160,6 +160,7 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler {
                     )
                 }
 
+                result.success("printColumn")
             }
 
             "openDrawer" -> {
