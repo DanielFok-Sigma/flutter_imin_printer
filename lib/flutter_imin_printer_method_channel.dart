@@ -68,4 +68,9 @@ class MethodChannelFlutterIminPrinter extends FlutterIminPrinterPlatform {
     await methodChannel.invokeMethod<void>('printColumn', jsonEncode(column.map((e) => e.toJson()).toList()));
   }
 
+  @override
+  Future<void> openDrawer() async {
+    await methodChannel.invokeMethod<void>('openDrawer');
+  }
+
 }

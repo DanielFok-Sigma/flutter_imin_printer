@@ -131,6 +131,13 @@ class _MyAppState extends State<MyApp> {
                 },
                 child: const Text("printColumn"),
               ),
+              //Open Drawer
+              ElevatedButton(
+                onPressed: () async {
+                  await _flutterIminPrinterPlugin.openDrawer();
+                },
+                child: const Text("openDrawer"),
+              ),
             ],
           ),
         ),

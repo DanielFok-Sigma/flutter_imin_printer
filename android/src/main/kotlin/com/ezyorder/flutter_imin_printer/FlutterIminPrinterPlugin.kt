@@ -7,6 +7,7 @@ import androidx.annotation.NonNull
 import com.ezyorder.flutter_imin_printer.models.ColumnText
 import com.ezyorder.flutter_imin_printer.models.PrinterText
 import com.google.gson.Gson
+import com.imin.library.IminSDKManager
 import com.imin.library.SystemPropManager
 import com.imin.printerlib.IminPrintUtils
 import com.imin.printerlib.IminPrintUtils.PrintConnectType
@@ -159,6 +160,11 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler {
                     )
                 }
 
+            }
+
+            "openDrawer" -> {
+                IminSDKManager.opencashBox()
+                result.success("openDrawer")
             }
 
 //            "printText2" -> {

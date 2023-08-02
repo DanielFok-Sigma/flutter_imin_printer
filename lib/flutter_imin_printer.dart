@@ -3,6 +3,10 @@ import 'flutter_imin_printer_platform_interface.dart';
 import 'models/column_text.dart';
 import 'models/printer_text.dart';
 
+export 'models/column_text.dart';
+export 'models/printer_text.dart';
+
+
 
 class FlutterIminPrinter {
   Future<String?> getPlatformVersion() {
@@ -52,6 +56,11 @@ class FlutterIminPrinter {
   //Print Column
   Future<void> printColumn(List<ColumnText> column) async {
     return FlutterIminPrinterPlatform.instance.printColumn(column);
+  }
+
+  //Open Drawer
+  Future<void> openDrawer() async {
+    return FlutterIminPrinterPlatform.instance.openDrawer();
   }
 
 }

@@ -65,5 +65,9 @@ abstract class FlutterIminPrinterPlatform extends PlatformInterface {
     throw UnimplementedError('printColumn() has not been implemented.');
   }
 
+  Future<void> openDrawer() {
+    throw UnimplementedError('openDrawer() has not been implemented.');
+  }
+
 
 }
