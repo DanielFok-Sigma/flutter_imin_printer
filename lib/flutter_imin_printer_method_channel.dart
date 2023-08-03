@@ -69,6 +69,11 @@ class MethodChannelFlutterIminPrinter extends FlutterIminPrinterPlatform {
   }
 
   @override
+  Future<void> partialCut() async {
+    await methodChannel.invokeMethod<void>('partialCut');
+  }
+
+  @override
   Future<void> openDrawer() async {
     await methodChannel.invokeMethod<void>('openDrawer');
   }

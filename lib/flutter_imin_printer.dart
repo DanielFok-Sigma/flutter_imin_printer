@@ -58,6 +58,11 @@ class FlutterIminPrinter {
     return FlutterIminPrinterPlatform.instance.printColumn(column);
   }
 
+  //Partial Cut
+  Future<void> partialCut() async {
+    return FlutterIminPrinterPlatform.instance.partialCut();
+  }
+
   //Open Drawer
   Future<void> openDrawer() async {
     return FlutterIminPrinterPlatform.instance.openDrawer();

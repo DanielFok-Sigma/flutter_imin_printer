@@ -69,5 +69,9 @@ abstract class FlutterIminPrinterPlatform extends PlatformInterface {
     throw UnimplementedError('openDrawer() has not been implemented.');
   }
 
+  Future<void> partialCut() {
+    throw UnimplementedError('partialCut() has not been implemented.');
+  }
+
 
 }

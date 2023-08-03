@@ -153,7 +153,6 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler {
 //                each Chinese character occupies two English characters, each width is greater than 0.
 //                colAlign –> alignment: 0 to the left, 1 to the center, and 2 to the right
 //                size –> Font size per column string array
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     mIminPrintUtils?.printColumnsText(
                         colArrStrings, colArrWidth, colArrAlign, colArrSize
@@ -162,6 +161,13 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler {
 
                 result.success("printColumn")
             }
+
+
+            "partialCut" -> {
+                mIminPrintUtils?.partialCut()
+                result.success("partialCut")
+            }
+
 
             "openDrawer" -> {
                 IminSDKManager.opencashBox()

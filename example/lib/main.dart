@@ -136,6 +136,14 @@ class _MyAppState extends State<MyApp> {
                 },
                 child: const Text("openDrawer"),
               ),
+              //Print ----------------------------------------
+              ElevatedButton(
+                onPressed: () async {
+                  await _flutterIminPrinterPlugin.printText(PrinterText(text: '------------------------------------------------'));
+                  await _flutterIminPrinterPlugin.printLines(lines: 120);
+                },
+                child: const Text("---------"),
+              ),
             ],
           ),
         ),
