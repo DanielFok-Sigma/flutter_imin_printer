@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_imin_printer/models/barcode_text.dart';
 
 import 'flutter_imin_printer_platform_interface.dart';
 import 'models/column_text.dart';
@@ -59,8 +60,8 @@ class MethodChannelFlutterIminPrinter extends FlutterIminPrinterPlatform {
   }
 
   @override
-  Future<void> printBarcode(String barcode) async {
-    await methodChannel.invokeMethod<void>('printBarcode', barcode);
+  Future<void> printBarcode(BarcodeText barcodeText) async {
+    await methodChannel.invokeMethod<void>('printBarcode', jsonEncode(barcodeText.toJson()));
   }
 
   @override

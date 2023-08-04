@@ -1,3 +1,4 @@
+import 'package:flutter_imin_printer/models/barcode_text.dart';
 import 'package:flutter_imin_printer/models/printer_text.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -57,7 +58,7 @@ abstract class FlutterIminPrinterPlatform extends PlatformInterface {
     throw UnimplementedError('printDemo() has not been implemented.');
   }
 
-  Future<void> printBarcode(String barcode) {
+  Future<void> printBarcode(BarcodeText barcodeText) {
     throw UnimplementedError('printBarcode() has not been implemented.');
   }
 

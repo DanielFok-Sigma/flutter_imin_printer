@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.os.Build
 import android.util.Log
 import androidx.annotation.NonNull
+import com.ezyorder.flutter_imin_printer.models.BarcodeText
 import com.ezyorder.flutter_imin_printer.models.ColumnText
 import com.ezyorder.flutter_imin_printer.models.PrinterText
 import com.google.gson.Gson
@@ -119,8 +120,13 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler {
             }
 
             "printBarcode" -> {
-                val barcode = call.arguments as String
-                mIminPrintUtils?.printBarCode(73, barcode)
+
+                val jsonString = call.arguments as String
+                val barcodeText = Gson().fromJson(jsonString, BarcodeText::class.java)
+
+
+                mIminPrintUtils?.setBarCodeContentPrintPos(barcodeText.barcodeContentPrint);
+                mIminPrintUtils?.printBarCode(73, barcodeText.barcode, barcodeText.barcodeAlign)
                 result.success("printBarcode")
             }
 

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_imin_printer/flutter_imin_printer.dart';
+import 'package:flutter_imin_printer/models/barcode_text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -102,7 +103,8 @@ class _MyAppState extends State<MyApp> {
               //Print Barcode
               ElevatedButton(
                 onPressed: () async {
-                  await _flutterIminPrinterPlugin.printBarcode("{B012345678912");
+                  BarcodeText barcodeText = BarcodeText(barcode: "{B012345678912",barcodeContentPrint: 2);
+                  await _flutterIminPrinterPlugin.printBarcode(barcodeText);
                   await _flutterIminPrinterPlugin.printSpace();
                 },
                 child: const Text("printBarcode"),

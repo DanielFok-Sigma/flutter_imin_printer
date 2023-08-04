@@ -1,4 +1,6 @@
 
+import 'package:flutter_imin_printer/models/barcode_text.dart';
+
 import 'flutter_imin_printer_platform_interface.dart';
 import 'models/column_text.dart';
 import 'models/printer_text.dart';
@@ -49,8 +51,8 @@ class FlutterIminPrinter {
   }
 
   //Print Barcode
-  Future<void> printBarcode(String barcode) async {
-    return FlutterIminPrinterPlatform.instance.printBarcode(barcode);
+  Future<void> printBarcode(BarcodeText barcodeText) async {
+    return FlutterIminPrinterPlatform.instance.printBarcode(barcodeText);
   }
 
   //Print Column
