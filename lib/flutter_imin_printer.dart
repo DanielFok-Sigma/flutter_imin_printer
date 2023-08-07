@@ -65,6 +65,11 @@ class FlutterIminPrinter {
     return FlutterIminPrinterPlatform.instance.partialCut();
   }
 
+  //Set Page Format
+  Future<void> setPageFormat(int style) async {
+    return FlutterIminPrinterPlatform.instance.setPageFormat(style);
+  }
+
   //Open Drawer
   Future<void> openDrawer() async {
     return FlutterIminPrinterPlatform.instance.openDrawer();

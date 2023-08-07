@@ -1,22 +1,28 @@
 package com.ezyorder.flutter_imin_printer.models
 
+import com.squareup.moshi.Json
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-class ColumnText(
+data class ColumnText(
     val text: String,
-    val textWidth: Int = 1,
-    val textAlign: Int = 0,
-    val textSize: Int = 28,
+    @Json(name = "textWidth") val textWidth: Int = 1,
+    @Json(name = "textAlign") val textAlign: Int = 0,
+    @Json(name = "textSize") val textSize: Int = 28,
 ) {
 
     companion object {
-        fun fromJson(json: Map<String, Any>): ColumnText {
-            return ColumnText(
-                json["text"] as String,
-                json["textWidth"] as Int,
-                json["textAlign"] as Int,
-                json["textSize"] as Int,
+        fun fromJsonList(json: String): List<ColumnText>? {
+            val moshi = Moshi.Builder()
+                .addLast(KotlinJsonAdapterFactory())
+                .build()
 
-            )
+            val type = Types.newParameterizedType(List::class.java, ColumnText::class.java)
+            val adapter = moshi.adapter<List<ColumnText>>(type)
+            return adapter.fromJson(json)
         }
     }
+
+
 }

@@ -79,4 +79,9 @@ class MethodChannelFlutterIminPrinter extends FlutterIminPrinterPlatform {
     await methodChannel.invokeMethod<void>('openDrawer');
   }
 
+  @override
+  Future<void> setPageFormat(int style) async {
+    await methodChannel.invokeMethod<void>('setPageFormat',style);
+  }
+
 }

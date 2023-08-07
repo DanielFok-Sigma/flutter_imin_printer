@@ -70,6 +70,10 @@ abstract class FlutterIminPrinterPlatform extends PlatformInterface {
     throw UnimplementedError('openDrawer() has not been implemented.');
   }
 
+  Future<void> setPageFormat(int style) {
+    throw UnimplementedError('setPageFormat() has not been implemented.');
+  }
+
   Future<void> partialCut() {
     throw UnimplementedError('partialCut() has not been implemented.');
   }
