@@ -69,7 +69,7 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler {
                             PrintConnectType.USB
                         }
                     }
-                    mIminPrintUtils?.resetDevice()
+//                    mIminPrintUtils?.resetDevice()
                     mIminPrintUtils?.initPrinter(connectType)
                     Log.d("IminPrinter", "initSDK: $deviceModel, ConnectType: $connectType")
 
