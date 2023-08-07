@@ -52,27 +52,32 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler {
 
             "initSDK" -> {
 
-                val deviceModel = SystemPropManager.getModel()
-                val brand = SystemPropManager.getBrand()
-                Log.d("FlutterIminPrinter", "initSDK: $deviceModel, $brand")
+                try{
 
-                connectType = when {
-                    deviceModel.contains("M2-203") || deviceModel.contains("M2-202") || deviceModel.contains(
-                        "M2-Pro"
-                    ) -> {
-                        PrintConnectType.SPI
-                    }
+                    val deviceModel = SystemPropManager.getModel()
+                    val brand = SystemPropManager.getBrand()
+                    Log.d("FlutterIminPrinter", "initSDK: $deviceModel, $brand")
 
-                    else -> {
-                        PrintConnectType.USB
+                    connectType = when {
+                        deviceModel.contains("M2-203") || deviceModel.contains("M2-202") || deviceModel.contains(
+                            "M2-Pro"
+                        ) -> {
+                            PrintConnectType.SPI
+                        }
+
+                        else -> {
+                            PrintConnectType.USB
+                        }
                     }
+                    mIminPrintUtils?.resetDevice()
+                    mIminPrintUtils?.initPrinter(connectType)
+                    Log.d("IminPrinter", "initSDK: $deviceModel, ConnectType: $connectType")
+
+                }catch (e: Exception){
+                    Log.d("FlutterIminPrinterError", "initSDK: $e")
                 }
-                mIminPrintUtils?.resetDevice()
-                mIminPrintUtils?.initPrinter(connectType)
 
 
-
-                Log.d("IminPrinter", "initSDK: $deviceModel, ConnectType: $connectType")
                 result.success("init")
 
             }

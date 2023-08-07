@@ -146,6 +146,22 @@ class _MyAppState extends State<MyApp> {
                 },
                 child: const Text("---------"),
               ),
+              ElevatedButton(
+                onPressed: () async {
+                  await _flutterIminPrinterPlugin.printText(PrinterText(text: "这个是个测试文本", textSize: 18));
+                  List<ColumnText> column = [
+                    ColumnText(text: "番茄", textWidth: 2, textAlign: 0, textSize: 18),
+                    ColumnText(text: "10块", textWidth: 2, textAlign: 2, textSize: 20),
+                  ];
+                  await _flutterIminPrinterPlugin.printColumn(column);
+                  await _flutterIminPrinterPlugin.printLines(lines: 25);
+                },
+                child: const Text("这个是个测试文本"),
+              ),
+
+              //Print Chinese Text
+
+
             ],
           ),
         ),
