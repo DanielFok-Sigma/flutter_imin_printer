@@ -46,7 +46,7 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
 
         when (call.method) {
             "getPlatformVersion" -> {
-                result.success("Android ${android.os.Build.VERSION.RELEASE}")
+                result.success("Android ${Build.VERSION.RELEASE}")
             }
 
             "initSDK" -> {
@@ -68,7 +68,6 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                             PrintConnectType.USB
                         }
                     }
-//                    IminPrintUtils.getInstance(this).initPrinter(connectType)
                     mIminPrintUtils?.initPrinter(connectType)
 //                    Log.d("IminPrinter", "resetDevice start")
 //                    mIminPrintUtils?.resetDevice()
@@ -91,27 +90,12 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 when (connectType) {
                     PrintConnectType.USB -> {
                         val status = mIminPrintUtils?.getPrinterStatus(connectType)
-//                        val status = IminPrintUtils.getInstance(this).getPrinterStatus(connectType)
                         //针对S1， //0：打印机正常 1：打印机未连接或未上电 3：打印头打开 7：纸尽  8：纸将尽  99：其它错误
                         Log.d("FlutterIminPrinter", " print USB status:$status")
                         result.success(status)
                     }
 
                     PrintConnectType.SPI -> {
-//                        IminPrintUtils.getInstance(this).getPrinterStatus(
-//                            PrintConnectType.SPI
-//                        ) { status ->
-//                            Log.d(
-//                                "FlutterIminPrinter",
-//                                "Print SPI status:" + status + "  PrintUtils.getPrintStatus==  " + PrintUtils.getPrintStatus()
-//                            )
-//                            if (status == -1 && PrintUtils.getPrintStatus() == -1) {
-//                                result.success(-1)
-//                            } else {
-//                                result.success(status)
-//                            }
-//                        }
-
                         mIminPrintUtils?.getPrinterStatus(
                             PrintConnectType.SPI
                         ) { status ->
@@ -134,18 +118,8 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
             }
 
             "printText" -> {
-//                val gson = Gson()
                 val jsonString = call.arguments as String
-                Log.d("FlutterIminPrinter", "printText: $jsonString")
-//                val printerText = Gson().fromJson(jsonString, PrinterText::class.java)
-//                val printerText = gson.fromJson(jsonString, PrinterText::class.java)
                 val printerText = PrinterText.fromJson(jsonString);
-//                val utils = IminPrintUtils.getInstance(this)
-//                utils.setAlignment(printerText.textAlign)
-//                utils.setTextSize(printerText.textSize)
-//                utils.setTextStyle(printerText.textStyle)
-//                utils.setTextLineSpacing(printerText.lineSpacing)
-//                utils.printText(printerText.text, 1)
 
                 if (printerText != null) {
                     Log.d("FlutterIminPrinter", "printText: ${printerText.text}")
@@ -166,10 +140,6 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 val jsonString = call.arguments as String
                 val barcodeText = BarcodeText.fromJson(jsonString);
 
-//                val utils = IminPrintUtils.getInstance(this)
-//                utils.setBarCodeContentPrintPos(barcodeText.barcodeContentPrint)
-//                utils.printBarCode(73, barcodeText.barcode, barcodeText.barcodeAlign)
-
                 if (barcodeText != null) {
                     mIminPrintUtils?.setBarCodeContentPrintPos(barcodeText.barcodeContentPrint);
                     mIminPrintUtils?.printBarCode(73, barcodeText.barcode, barcodeText.barcodeAlign)
@@ -180,19 +150,12 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
             }
 
             "printSpace" -> {
-//                val utils = IminPrintUtils.getInstance(this)
-//                utils.printAndLineFeed()
-
                 mIminPrintUtils?.printAndLineFeed()
                 result.success("printSpace")
             }
 
             "printLines" -> {
                 val lines = call.arguments as Int
-
-//                val utils = IminPrintUtils.getInstance(this)
-//                utils.printAndFeedPaper(lines)
-
                 mIminPrintUtils?.printAndFeedPaper(lines)
                 result.success("printLines")
             }
@@ -202,9 +165,7 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 val jsonString = call.arguments as String
 
 
-                val colArr: List<ColumnText>? =
-                    ColumnText.fromJsonList(jsonString)
-//                    Gson().fromJson(jsonString, Array<ColumnText>::class.java).toMutableList()
+                val colArr: List<ColumnText>? = ColumnText.fromJsonList(jsonString)
 
                 if (colArr != null) {
                     val colArrStrings = colArr.map { it.text }.toTypedArray()
@@ -219,12 +180,6 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
 //                colAlign –> alignment: 0 to the left, 1 to the center, and 2 to the right
 //                size –> Font size per column string array
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-//                    val utils = IminPrintUtils.getInstance(this)
-//                    utils.printColumnsText(
-//                        colArrStrings, colArrWidth, colArrAlign, colArrSize
-//                    )
-
                         mIminPrintUtils?.printColumnsText(
                             colArrStrings, colArrWidth, colArrAlign, colArrSize
                         )
@@ -237,18 +192,12 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
 
 
             "partialCut" -> {
-//                val utils = IminPrintUtils.getInstance(this)
-//                utils.partialCut()
-
                 mIminPrintUtils?.partialCut()
                 result.success("partialCut")
             }
 
             "setPageFormat" -> {
                 val data = call.arguments as Int
-//                val utils = IminPrintUtils.getInstance(this)
-//                utils.setPageFormat(data)
-
                 mIminPrintUtils?.setPageFormat(data)
                 result.success("setPageFormat")
             }
