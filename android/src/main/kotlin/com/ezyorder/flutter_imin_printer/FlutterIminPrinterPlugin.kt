@@ -6,6 +6,7 @@ import androidx.annotation.NonNull
 import com.ezyorder.flutter_imin_printer.models.BarcodeText
 import com.ezyorder.flutter_imin_printer.models.ColumnText
 import com.ezyorder.flutter_imin_printer.models.PrinterText
+import com.ezyorder.flutter_imin_printer.models.QRObj
 import com.imin.library.IminSDKManager
 import com.imin.library.SystemPropManager
 import com.imin.printerlib.IminPrintUtils
@@ -207,6 +208,48 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 IminSDKManager.opencashBox()
                 result.success("openDrawer")
             }
+
+            "printQR" -> {
+
+                val jsonString = call.arguments as String
+                val qrObj = QRObj.fromJson(jsonString);
+
+                if (qrObj != null) {
+                    mIminPrintUtils?.printQrCode(qrObj.qrCode, qrObj.alignmentMode.value)
+                }
+
+
+            }
+
+            "printHR" -> {
+                mIminPrintUtils?.setAlignment(1)
+                mIminPrintUtils?.setTextSize(28)
+                mIminPrintUtils?.setTextStyle(0)
+                mIminPrintUtils?.setTextLineSpacing(1.0f)
+
+                val is58mm = IminPrintUtils.textWidth == 384
+                if (is58mm) {
+                    mIminPrintUtils?.printText("------------------------------------------------", 1)
+                } else {
+                    mIminPrintUtils?.printText("------------------------------------------------------------", 1)
+                }
+            }
+
+
+            "printHR2" -> {
+                mIminPrintUtils?.setAlignment(1)
+                mIminPrintUtils?.setTextSize(28)
+                mIminPrintUtils?.setTextStyle(0)
+                mIminPrintUtils?.setTextLineSpacing(1.0f)
+
+                val is58mm = IminPrintUtils.textWidth == 384
+                if (is58mm) {
+                    mIminPrintUtils?.printText("=========================", 1)
+                } else {
+                    mIminPrintUtils?.printText("====================================", 1)
+                }
+            }
+
 
 //            "printText2" -> {
 //                val text = call.arguments as String

@@ -70,6 +70,14 @@ abstract class FlutterIminPrinterPlatform extends PlatformInterface {
     throw UnimplementedError('openDrawer() has not been implemented.');
   }
 
+  Future<void> printHR() {
+    throw UnimplementedError('printHR() has not been implemented.');
+  }
+
+  Future<void> printHR2() {
+    throw UnimplementedError('printHR2() has not been implemented.');
+  }
+
   Future<void> setPageFormat(int style) {
     throw UnimplementedError('setPageFormat() has not been implemented.');
   }

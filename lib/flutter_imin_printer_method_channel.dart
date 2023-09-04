@@ -47,8 +47,6 @@ class MethodChannelFlutterIminPrinter extends FlutterIminPrinterPlatform {
     await methodChannel.invokeMethod<void>('printLines', lines);
   }
 
-
-
   @override
   Future<void> printText2(String text) async {
     await methodChannel.invokeMethod<void>('printText2', text);
@@ -80,8 +78,17 @@ class MethodChannelFlutterIminPrinter extends FlutterIminPrinterPlatform {
   }
 
   @override
-  Future<void> setPageFormat(int style) async {
-    await methodChannel.invokeMethod<void>('setPageFormat',style);
+  Future<void> printHR() async {
+    await methodChannel.invokeMethod<void>('printHR');
   }
 
+  @override
+  Future<void> printHR2() async {
+    await methodChannel.invokeMethod<void>('printHR2');
+  }
+
+  @override
+  Future<void> setPageFormat(int style) async {
+    await methodChannel.invokeMethod<void>('setPageFormat', style);
+  }
 }

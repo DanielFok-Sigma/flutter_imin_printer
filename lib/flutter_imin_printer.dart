@@ -75,4 +75,14 @@ class FlutterIminPrinter {
     return FlutterIminPrinterPlatform.instance.openDrawer();
   }
 
+  //Print HR (-)
+  Future<void> printHR() async {
+    return FlutterIminPrinterPlatform.instance.printHR();
+  }
+
+  //Print HR (=)
+  Future<void> printHR2() async {
+    return FlutterIminPrinterPlatform.instance.printHR2();
+  }
+
 }
