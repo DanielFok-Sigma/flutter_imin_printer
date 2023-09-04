@@ -217,7 +217,7 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 if (qrObj != null) {
                     mIminPrintUtils?.printQrCode(qrObj.qrCode, qrObj.alignmentMode.value)
                 }
-
+                result.success("printQR")
 
             }
 
@@ -233,6 +233,8 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 } else {
                     mIminPrintUtils?.printText("------------------------------------------------------------", 1)
                 }
+
+                result.success("printHR")
             }
 
 
@@ -248,6 +250,8 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 } else {
                     mIminPrintUtils?.printText("====================================", 1)
                 }
+
+                result.success("printHR2")
             }
 
 
