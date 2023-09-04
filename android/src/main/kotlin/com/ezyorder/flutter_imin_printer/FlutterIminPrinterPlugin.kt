@@ -231,7 +231,7 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 if (is58mm) {
                     mIminPrintUtils?.printText("------------------------------------------------", 1)
                 } else {
-                    mIminPrintUtils?.printText("------------------------------------------------------------", 1)
+                    mIminPrintUtils?.printText("----------------------------------------------------------------", 1)
                 }
 
                 result.success("printHR")
@@ -248,7 +248,7 @@ class FlutterIminPrinterPlugin : FlutterPlugin, MethodCallHandler, FlutterActivi
                 if (is58mm) {
                     mIminPrintUtils?.printText("=========================", 1)
                 } else {
-                    mIminPrintUtils?.printText("====================================", 1)
+                    mIminPrintUtils?.printText("=======================================", 1)
                 }
 
                 result.success("printHR2")
